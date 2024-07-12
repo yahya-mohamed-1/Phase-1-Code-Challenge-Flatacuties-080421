@@ -1,6 +1,6 @@
 // Currently clicked character
 let clickedCharacter = null;
-
+const h4 = document.querySelector("#vote-count");
 // Get div element that contains the `character-bar` id
 const div = document.getElementById("character-bar");
 // Fetch character data from the server
@@ -30,7 +30,6 @@ fetch("http://localhost:3000/characters")
             const img = document.querySelector("#image");
             img.src = character.image;
 
-            const h4 = document.querySelector("#vote-count");
             h4.textContent = character.votes;
 
             // Update value of clickedCharacter
@@ -48,7 +47,6 @@ form.addEventListener("submit", (event) => {
   if (clickedCharacter) {
     clickedCharacter.votes += Number(input.value);
     console.log(clickedCharacter.votes);
-    const h4 = document.querySelector("#vote-count");
     h4.textContent = clickedCharacter.votes;
     // Reset value of input
     input.value = "";
@@ -60,7 +58,6 @@ const resetBtn = document.querySelector("#reset-btn");
 resetBtn.addEventListener("click", function () {
   if (clickedCharacter) {
     clickedCharacter.votes = 0;
-    const h4 = document.querySelector("#vote-count");
     h4.textContent = clickedCharacter.votes;
     input.value = "";
   }
